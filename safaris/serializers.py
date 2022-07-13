@@ -5,23 +5,25 @@ from django.contrib.auth.models import User, Group
 
 
 class TouristSerializer(serializers.ModelSerializer):
-
+    image = serializers.ImageField()
     class Meta:
         model = Tourist
-        fields = ['admin','name',  'email','phone', 'bio', 'password','verified']
+        fields = ['admin','name',  'email','phone', 'bio', 'password','verified', 'image']
 
 class SafarisSerializer(serializers.ModelSerializer):
     image = serializers.ImageField()
+    # video = serializers.FileField()
     
     class Meta:
         model = Safaris
-        fields = ('name', 'description', 'location', 'pub_date','image')
+        fields = ('name', 'price', 'description', 'location', 'pub_date','image', )
 
 
 class TourguideSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
     class Meta:
         model = Tourguide
-        fields = ( 'name','email','location','safaris')
+        fields = ( 'name','email','location','safaris', 'image')
 
 # class TouristSignupSerializer(serializers.ModelSerializer):
 #     password2 = serializers.CharField(style={"input_type":"password2"}, write_only=True)

@@ -15,10 +15,12 @@ from virtualSafaris.settings import AUTH_USER_MODEL
 class Safaris(models.Model):
    
     name = models.CharField(max_length=344)
+    price = models.IntegerField(default=0)
     description = models.TextField()
     location = models.CharField(max_length=400)
     pub_date = models.DateTimeField(auto_now_add=True)
-    image = CloudinaryField('safais-image', null=True)
+    image = CloudinaryField('safaris-image', null=True)
+    # video = CloudinaryField('safaris-video', null=True)
   
     def __str__(self):
         return self.name
@@ -43,6 +45,7 @@ class Tourguide(models.Model):
     location = models.IntegerField(blank=True, default='')
     address = models.CharField(max_length=255, default='')
     safaris = models.ForeignKey(Safaris, on_delete=models.CASCADE)
+    image = CloudinaryField('tourguide-image', null=True)
    
     def __str__(self):
         return self.name

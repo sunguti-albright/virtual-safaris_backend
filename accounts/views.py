@@ -9,7 +9,7 @@ class TouristRegisterView(APIView):
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(is_voter=True)
+        serializer.save(is_tourist=True)
         return Response(serializer.data)
 
 class AdminRegisterView(APIView):
